@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Agrego Bootstrap  -->
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+
+    <title>Editar y Eliminar con Modal</title>
+</head>
+
+<body>
+    <div class="container p-4">
+        <h2 class="mb-4">Edito mis Productos</h2>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo">Open modal for @mdo</button>
+
+        <form action="/" method="get">
+
+            <table class="table table-striped" id="mytable">
+                <thead>
+                    <th>Producto id</th>
+                    <th>Producto Nombre</th>
+                    <th>Producto Precio</th>
+                </thead>
+
+                <tbody>
+                    {{#each results}}
+                    <tr>
+                        <td>{{producto_id}}</td>
+                        <td>{{producto_nombre}}</td>
+                        <td>{{producto_precio}}</td>
+                        {{/each}}
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </form>
+
+
+<!-- Agrego Modal editar -->
+
+<form action="/update" method="post">
+
+        <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edite o Elimine Productos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Nombre del Producto</label>
+                                <input type="text" class="form-control producto_nombre" name="producto_nombre" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Precio del Producto</label>
+                                <input type="text" class="form-control producto_precio" name="producto_precio" id="recipient-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+    <!-- Agrego JS/Bootrstrap y Jquerry -->
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    
+    <script src="/public/script.js"></script>
+
+    </script>
+
+</body>
+
+</html>

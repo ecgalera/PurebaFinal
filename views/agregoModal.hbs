@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Agrego Bootstrap  -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <title>Editar y Eliminar con Modal</title>
+</head>
+
+<body>
+    <div class="container p-4">
+        <h2 class="mb-4">Edito mis Productos</h2>
+
+        {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo">Open modal for @mdo</button> --}}
+
+        <form action="/" method="get">
+
+            <table class="table table-striped" id="mytable">
+                <thead>
+                    <th>Producto id</th>
+                    <th>Producto Nombre</th>
+                    <th>Producto Precio</th>
+                </thead>
+
+                <tbody>
+                    {{#each results}}
+                    <tr>
+                        <td>{{producto_id}}</td>
+                        <td>{{producto_nombre}}</td>
+                        <td>{{producto_precio}}</td>
+                       <td align="right"> 
+                        <a href="javascript:void(0);" class="btn btn-primary edit" data-id="{{producto_id}}" data-producto_nombre="{{producto_nombre}}" data-producto_precio="{{producto_precio}}">Editar</a> 
+                        <a href="javascript:void(0);" class="btn btn-danger delete" data-id="{{producto_id}}">Eliminar</a> 
+                     </td>
+
+                        {{/each}}
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </form>
+
+
+  {{!-- Modal editar --}}
+      <form action="/update" method="post">
+         <div class="modal" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="form-group">
+                        <input type="text" name="producto_nombre" class="form-control producto_nombre"
+                           placeholder="Producto Nombre" required>
+                     </div>
+                     <div class="form-group">
+                        <input type="text" name="producto_precio" class="form-control producto_precio" placeholder="Precio" required>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <input type="hidden" name="id" class="producto_id">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                     <button type="submit" class="btn btn-primary">Actualizar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </form>
+
+
+
+<!-- Modal Delete-->
+<form action="/delete" method="post">
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Elimiar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Esta seguro que quire Eliminar</p>
+      </div>
+      <div class="modal-footer">
+         <input type="hidden" name="id" class="producto_id">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+    <!-- Agrego JS/Bootrstrap y Jquerry -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+         
+    <script src="js/script.js"></script>
+
+    </script>
+
+</body>
+
+</html>

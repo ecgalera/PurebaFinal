@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body>
+
+            <form action="/" method="get">
+
+                <table>
+                    <thead>
+                        <th>Producto id</th>
+                        <th>Producto Nombre</th>
+                        <th>Producto Precio</th>
+                    </thead>
+
+                    <tbody>
+                        {{#each results}}
+                        <tr>
+                            <td>{{producto_id}}</td>
+                            <td>{{producto_nombre}}</td>
+                            <td>{{producto_precio}}</td>
+                            {{/each}}
+                        </tr>
+                    </tbody>
+
+
+                </table>
+
+            </form>
+
+
+
+    
+</body>
+</html>
